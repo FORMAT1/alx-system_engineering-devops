@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 pwd | cat 
+=======
+echo 'Hello, World' 
+>>>>>>> 320e5544be9d7abcf971da5d8ff622f94112d31c
