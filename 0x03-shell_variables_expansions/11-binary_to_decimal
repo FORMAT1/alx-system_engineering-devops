@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $((2#BINARY))
+find . -mindepth 1 -type d | wc -l
