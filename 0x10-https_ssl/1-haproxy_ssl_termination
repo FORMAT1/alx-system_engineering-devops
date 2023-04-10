@@ -33,18 +33,18 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend  femitaiwo-frontend-http
+frontend  fmtformat-frontend-http
         bind *:80
         mode http
 	http-request set-header X-Forwarded-Proto http
-        default_backend femitaiwo-backend
+        default_backend fmtformat-backend
 
-frontend femitaiwo-frontend-https
-	bind *:443 ssl crt /etc/haproxy/certs/www.femitaiwo.tech.pem
+frontend fmtformat-frontend-https
+	bind *:443 ssl crt /etc/haproxy/certs/www.fmtformat.tech.pem
 	http-request set-header X-Forwarded-Proto https
-	default_backend femitaiwo-backend
+	default_backend fmtformat-backend
 
-backend femitaiwo-backend
+backend fmtformat-backend
         balance roundrobin
         server 154415-web-01 34.234.204.172 check
-        server 154415-web-02 100.26.253.36 `check
+        server 154415-web-02 100.26.253.36 check
