@@ -33,19 +33,19 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend tjibbs-frontend
+frontend fmtformat-frontend
         bind *:80
         mode http
         http-request redirect scheme https code 301 unless { ssl_fc }
         http-request set-header X_Forwarded-Proto http
-        default_backend tjibbs-backend
+        default_backend fmtformat-backend
 
-frontend tjibbs-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/tjibbs.tech.pem
+frontend fmtformat-frontend-https
+        bind *:443 ssl crt /etc/haproxy/certs/fmtformat.tech.pem
         http-request set-header X-Forwarded-Proto https
-        default_backend tjibbs-backend
+        default_backend fmtformat-backend
 
-backend tjibbs-backend
+backend fmtformat-backend
         balance roundrobin
-        server 145920-web-01 54.237.224.189:80 check
-        server 145920-web-02 100.25.33.239:80 check
+        server 154415-web-01 54.208.102.172:80 check
+        server 154415-web-02 54.210.53.78:80 check
