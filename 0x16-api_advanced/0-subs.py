@@ -5,13 +5,25 @@ from sys import argv
 
 
 def number_of_subscribers(subreddit):
-    """ returns the number of  subscribers for a given subreddit
-    """
+    """returns the number of  subscribers for a given subreddit"""
+    url = f'https://www.reddit.com/r/{subreddit}/about.json'
+    
+    """Set a custom User-Agent to avoid being blocked"""
     headers = {'User-Agent': 'xica369'}
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    response = requests.get(url, headers=headers, allow_redirects=False)
 
+    """Send an HTTP GET request to the Reddit API"""
+    response = requests.get(url, headers=headers)
+    
+   """ Check if the request was successful"""
     if response.status_code == 200:
-        return (response.json().get("data").get("subscribers"))
-    return (0)
-	
+        try:
+            data = response.json()
+            """Extract the number of subscribers from the response"""
+            subscribers = data['data']['subscribers']
+            return subscribers
+        except (KeyError, ValueError):
+            """Invalid JSON response"""
+            return 0
+    else:
+        """Invalid subreddit or other error"""
+        return 0
