@@ -33,13 +33,13 @@ defaults
   timeout connect 10s
   timeout server 15s
   timeout http-request 10s
-frontend clickviral-tech-frontend
+frontend fmtformat-tech-frontend
     bind *:80
-    default_backend clickviral-tech-backend
-backend clickviral-tech-backend
+    default_backend fmtformat-tech-backend
+backend fmtformat-tech-backend
     balance roundrobin
-    server 151666-web-01 100.25.190.21:80 check
-    server 151666-web-02 54.160.77.90:80 check
+    server 151666-web-01 35.153.17.150:80 check
+    server 151666-web-02 34.232.53.219:80 check
 "
 
 # shellcheck disable=SC2154
