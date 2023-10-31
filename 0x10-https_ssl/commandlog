@@ -7,6 +7,6 @@ sudo certbot certonly --standalone --preferred-challenges http --http-01-port 80
 sudo ls /etc/letsencrypt/live/fmtformat
 sudo mkdir -p /etc/haproxy/certs
 DOMAIN='fmtformat.tech' 
-sudo -E bash -c 'cat /etc/letsencrypt/live/$DOMAIN/fullchain.pem /etc/letsencrypt/live/$DOMAIN/privkey.pem > /etc/haproxy/certs/$DOMAIN.pem'
+sudo -E bash -c 'cat /etc/letsencrypt/live/www.fmtformat.tech/fullchain.pem /etc/letsencrypt/live/www.fmtformat.tech/privkey.pem > /etc/haproxy/certs/www.fmtformat.tech.pem'
 sudo chmod -R go-rwx /etc/haproxy/certs
 sudo vim /etc/haproxy/haproxy.cfg
